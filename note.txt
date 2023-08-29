@@ -1,0 +1,23 @@
+First Run zookeeper for managing cluster metadata, leader election, and other coordination tasks
+docker run --name zookeepr -p 2181:2181 zookeeper
+
+Second
+Set KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR to 1. This is required when you are running with a single-node cluster. If you have three or more nodes, you can use the default.
+docker run --name kafka -p 9092:9092 \
+-e KAFKA_ZOOKEEPER_CONNECT=host.docker.internal:2181 \
+-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://host.docker.internal:9092 \
+-e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 confluentinc/cp-kafka
+
+docker run --name kafka -p 9092:9092 \
+--add-host strange:172.23.176.1 \
+-e KAFKA_ZOOKEEPER_CONNECT=strange:2181 \
+-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://strange:9092 \
+-e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 confluentinc/cp-kafka
+
+docker run --name kafka -p 9092:9092 \
+-e KAFKA_ZOOKEEPER_CONNECT=172.23.176.1:2181 \
+-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://172.23.176.1:9092 \
+-e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 confluentinc/cp-kafka
+
+// *
+docker run --name kafka -p 9092:9092 -e KAFKA_ZOOKEEPER_CONNECT=172.23.176.1:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://172.23.176.1:9092 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 confluentinc/cp-kafka
