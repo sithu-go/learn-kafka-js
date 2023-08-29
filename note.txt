@@ -21,3 +21,11 @@ docker run --name kafka -p 9092:9092 \
 
 // *
 docker run --name kafka -p 9092:9092 -e KAFKA_ZOOKEEPER_CONNECT=172.23.176.1:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://172.23.176.1:9092 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 confluentinc/cp-kafka
+
+
+Create Topic
+Produce Topic
+
+Consume Topic with group
+subscribe with topic name
+keep polling messages
