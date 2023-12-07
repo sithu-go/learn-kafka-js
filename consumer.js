@@ -5,12 +5,12 @@ consume()
 async function consume() {
     try {
         const kafka = new Kafka({
-            "clientId": "myapp",
-            "brokers": ["localhost:9092"]
+            "clientId": "myApp",
+            "brokers": ["localhost:9092"],
         })
 
         const consumer = kafka.consumer({
-            "groupId": "G1",
+            "groupId": "G6",
         })
 
         console.log("Connecting");

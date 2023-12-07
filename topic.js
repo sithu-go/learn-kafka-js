@@ -23,7 +23,7 @@ async function run() {
         //     ]
         // })
 
-        console.log("Created Successfully");
+        // console.log("Created Successfully");
 
         // Deleting Topic
 
@@ -31,8 +31,8 @@ async function run() {
         // await admin.deleteTopics({
         //     topics: ["Users"]
         // })
-        let topics = await admin.listTopics()
-        console.log(topics);
+        // let topics = await admin.listTopics()
+        // console.log(topics);
 
 
 

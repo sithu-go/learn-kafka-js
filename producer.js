@@ -1,4 +1,4 @@
-const { Kafka, Partitioners } = require("kafkajs");
+const { Kafka } = require("kafkajs");
 
 // node topics.js Hello
 // 0    1         2
@@ -12,10 +12,6 @@ async function produce() {
             "brokers": ["localhost:9092"]
         })
 
-        // https://kafka.js.org/docs/migration-guide-v2.0.0#producer-new-default-partitioner
-        const producer = kafka.producer({
-            createPartitioner: Partitioners.DefaultPartitioner
-        });
         console.log("Connecting");
         await producer.connect();
         console.log("Connected");
